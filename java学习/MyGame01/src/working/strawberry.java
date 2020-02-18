@@ -1,23 +1,47 @@
 package working;
 
+import java.io.File;
 import java.io.FileFilter;
-import java.util.List;
+import java.io.FilenameFilter;
+
+// 文件名过滤器
 
 public class strawberry {
 
-	// 获取一个想要的指定文件的集合。获取 下E:\elephant\java学习（包含子目录）的所有的.java的文件对象。并存储到集合中。
-	/*
-	 * 思路： 1、初始化指定文件夹。 2、创建集合容器 3、使用递归方法遍历查找
-	 * 
-	 */
 	public static void main(String[] args) {
-		
-		GetFind( dir, green, fangfa );
-	
+
+		File dir = new File("c:\\");
+
+		File[] names = dir.listFiles(new bear());
+
+		for (File str : names) {
+			System.out.println(str);
+		}
+
 	}
-	
-	public static void GetFind(File dir,List green, FileFilter fangfa) {
-		
-	} 
-	
+
+}
+
+class boat implements FilenameFilter {
+	String name;
+
+	public boat(String name) {
+		super();
+		this.name = name;
+	}
+
+	@Override
+	public boolean accept(File dir, String st) {
+
+		return st.endsWith(name);
+	}
+}
+
+class bear implements FileFilter {
+
+	@Override
+	public boolean accept(File book) {
+		return book.isDirectory();
+	}
+
 }
